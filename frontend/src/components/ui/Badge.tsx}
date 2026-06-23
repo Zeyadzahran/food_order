@@ -1,0 +1,24 @@
+import { cn } from '../../utils';
+
+interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+  variant?: 'primary' | 'surface' | 'accent';
+}
+
+export default function Badge({ className, variant = 'primary', children, ...props }: BadgeProps) {
+  return (
+    <span
+      className={cn(
+        'inline-flex items-center px-3 py-1 font-display text-xs font-bold uppercase tracking-wider',
+        {
+          'bg-primary-100 text-primary-900': variant === 'primary',
+          'bg-surface-200 text-surface-900': variant === 'surface',
+          'bg-accent text-white': variant === 'accent',
+        },
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </span>
+  );
+}
